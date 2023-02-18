@@ -10,13 +10,13 @@ import androidx.annotation.Nullable;
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "noteandlistmemos.db";
     private static final int DATABASE_VERSION = 1;
-    private static final String NOTES_TABLE = "NOTES_TABLE";
+    public static final String NOTES_TABLE = "NOTES_TABLE";
     public static final String ID = "COLUMN_NOTE_ID";
-    private static final String TITLE = "COLUMN_TITLE";
-    private static final String CONTENT = "COLUMN_CONTENT";
-    private static final String IMPORTANCE = "COLUMN_IMPORTANCE";
-    private static final String CREATION_TIME = "COLUMN_CREATION_TIME";
-    private static final String DUE_TIME = "COLUMN_DUE_TIME";
+    public static final String TITLE = "COLUMN_TITLE";
+    public static final String CONTENT = "COLUMN_CONTENT";
+    public static final String IMPORTANCE = "COLUMN_IMPORTANCE";
+    public static final String CREATION_TIME = "COLUMN_CREATION_TIME";
+    public static final String DUE_TIME = "COLUMN_DUE_TIME";
 
     private static final String CREATE_TABLE = "CREATE TABLE " + NOTES_TABLE + " (" + ID +
             " INTEGER PRIMARY KEY AUTOINCREMENT, " + TITLE + " TEXT, " + CONTENT + " TEXT, " +
