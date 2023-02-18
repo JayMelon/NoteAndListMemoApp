@@ -7,6 +7,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class DataSource {
     private SQLiteDatabase database;
@@ -85,6 +86,66 @@ public class DataSource {
     }
 
     public ArrayList<Note> getNotes() {
+        ArrayList<Note> notes = new ArrayList<>();
+        String query = "SELECT * FROM " + DatabaseHelper.NOTES_TABLE;
+        return noteSetter(notes, query);
+    }
+
+    public ArrayList<Note> getNotes(String sortField, String sortOrder) {
+        ArrayList<Note> notes = new ArrayList<>();
+        String query = "SELECT * FROM " + DatabaseHelper.NOTES_TABLE + " ORDER BY " + sortField + " " + sortOrder;
+        return noteSetter(notes, query);
+    }
+
+    public Note getSpecificNote(int noteID) {
+        Note note = new Note();
+        String query = "SELECT * FROM " + DatabaseHelper.NOTES_TABLE + " WHERE " + DatabaseHelper.ID + " = " + noteID;
+        Cursor cursor = database.rawQuery(query,null);
+        if(cursor.moveToFirst()){
+            noteSet(note, cursor);
+
+            cursor.close();
+        }
+        return note;
+    }
+
+    // Used to shorten code for getNotes methods
+    private ArrayList<Note> noteSetter(ArrayList<Note> notes, String query) {
+        try {
+            Cursor cursor = database.rawQuery(query, null);
+
+            cursor.moveToFirst();
+            while(!cursor.isAfterLast()) {
+                Note note = new Note();
+                noteSet(note, cursor);
+
+                notes.add(note);
+                cursor.moveToNext();
+            }
+            cursor.close();
+        } catch (Exception e) {
+            notes = new ArrayList<>();
+        }
+        return notes;
+    }
+
+    private void noteSet(Note note, Cursor cursor) {
+        note.setNoteID(cursor.getInt(0));
+        note.setTitle(cursor.getString(1));
+        note.setContent(cursor.getString(2));
+        note.setImportance(cursor.getString(3));
+
+
+        //
+        // Need to figure out how to pull these properly
+        //
+        Calendar calendarCreation = Calendar.getInstance();
+        calendarCreation.setTimeInMillis(Long.valueOf(cursor.getString(4)));
+        note.setCreationTime(calendarCreation);
+        Calendar calendarDue = Calendar.getInstance();
+        calendarDue.setTimeInMillis(Long.valueOf(cursor.getString(5)));
+        note.setDueTime(calendarDue);
 
     }
+
 }
