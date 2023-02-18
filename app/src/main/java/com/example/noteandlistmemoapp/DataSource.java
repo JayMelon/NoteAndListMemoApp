@@ -30,7 +30,7 @@ public class DataSource {
 
         values.put(DatabaseHelper.TITLE, note.getTitle());
         values.put(DatabaseHelper.CONTENT, note.getContent());
-        values.put(DatabaseHelper.IMPORTANCE, note.getImportance());
+        values.put(DatabaseHelper.PRIORITY, note.getPriority());
         values.put(DatabaseHelper.CREATION_TIME, String.valueOf(note.getCreationTime().getTimeInMillis()));
         values.put(DatabaseHelper.DUE_TIME, String.valueOf(note.getDueTime().getTimeInMillis()));
 
@@ -133,7 +133,7 @@ public class DataSource {
         note.setNoteID(cursor.getInt(0));
         note.setTitle(cursor.getString(1));
         note.setContent(cursor.getString(2));
-        note.setImportance(cursor.getString(3));
+        note.setPriority(cursor.getString(3));
 
 
         //

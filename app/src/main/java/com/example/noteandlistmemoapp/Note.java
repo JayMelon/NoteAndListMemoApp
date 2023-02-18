@@ -6,7 +6,7 @@ public class Note {
     private int noteID;
     private String title;
     private String content;
-    private String importance;
+    private String priority;
     private Calendar creationTime;
     private Calendar dueTime;
 
@@ -39,12 +39,12 @@ public class Note {
         this.content = content;
     }
 
-    public String getImportance() {
-        return importance;
+    public String getPriority() {
+        return priority;
     }
 
-    public void setImportance(String importance) {
-        this.importance = importance;
+    public void setPriority(String priority) {
+        this.priority = priority;
     }
 
     public Calendar getCreationTime() {

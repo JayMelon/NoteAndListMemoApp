@@ -14,13 +14,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String ID = "COLUMN_NOTE_ID";
     public static final String TITLE = "COLUMN_TITLE";
     public static final String CONTENT = "COLUMN_CONTENT";
-    public static final String IMPORTANCE = "COLUMN_IMPORTANCE";
+    public static final String PRIORITY = "COLUMN_PRIORITY";
     public static final String CREATION_TIME = "COLUMN_CREATION_TIME";
     public static final String DUE_TIME = "COLUMN_DUE_TIME";
 
     private static final String CREATE_TABLE = "CREATE TABLE " + NOTES_TABLE + " (" + ID +
             " INTEGER PRIMARY KEY AUTOINCREMENT, " + TITLE + " TEXT, " + CONTENT + " TEXT, " +
-            IMPORTANCE + " TEXT, " + CREATION_TIME + " TEXT, " + DUE_TIME + " TEXT )";
+            PRIORITY + " TEXT, " + CREATION_TIME + " TEXT, " + DUE_TIME + " TEXT )";
 
     public DatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
