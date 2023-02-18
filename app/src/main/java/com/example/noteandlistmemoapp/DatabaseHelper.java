@@ -16,10 +16,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String CONTENT = "COLUMN_CONTENT";
     private static final String IMPORTANCE = "COLUMN_IMPORTANCE";
     private static final String CREATION_TIME = "COLUMN_CREATION_TIME";
+    private static final String DUE_TIME = "COLUMN_DUE_TIME";
 
     private static final String CREATE_TABLE = "CREATE TABLE " + NOTES_TABLE + " (" + ID +
-            " INTEGER PRIMARY KEY AUTOINCREMENT, " + TITLE + " TEXT, " + CONTENT + "TEXT, " +
-            IMPORTANCE + " TEXT, " + CREATION_TIME + " TEXT )";
+            " INTEGER PRIMARY KEY AUTOINCREMENT, " + TITLE + " TEXT, " + CONTENT + " TEXT, " +
+            IMPORTANCE + " TEXT, " + CREATION_TIME + " TEXT, " + DUE_TIME + " TEXT )";
 
     public DatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

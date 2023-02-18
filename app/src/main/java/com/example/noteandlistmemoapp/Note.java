@@ -8,6 +8,7 @@ public class Note {
     private String content;
     private String importance;
     private Calendar creationTime;
+    private Calendar dueTime;
 
     public Note() {
         noteID = -1;
@@ -52,5 +53,13 @@ public class Note {
 
     public void setCreationTime(Calendar creationTime) {
         this.creationTime = creationTime;
+    }
+
+    public Calendar getDueTime() {
+        return dueTime;
+    }
+
+    public void setDueTime(Calendar dueTime) {
+        this.dueTime = dueTime;
     }
 }
