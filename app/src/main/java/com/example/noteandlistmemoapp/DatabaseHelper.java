@@ -19,8 +19,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DUE_TIME = "COLUMN_DUE_TIME";
 
     private static final String CREATE_TABLE = "CREATE TABLE " + NOTES_TABLE + " (" + ID +
-            " INTEGER PRIMARY KEY AUTOINCREMENT, " + TITLE + " TEXT, " + CONTENT + " TEXT, " +
-            PRIORITY + " TEXT, " + CREATION_TIME + " TEXT, " + DUE_TIME + " TEXT )";
+            " INTEGER PRIMARY KEY AUTOINCREMENT, " + TITLE  + " TEXT NOT NULL, " + CONTENT + " TEXT, " +
+            PRIORITY + " TEXT, " + CREATION_TIME + " TEXT NOT NULL, " + DUE_TIME + " TEXT )";
 
     public DatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
