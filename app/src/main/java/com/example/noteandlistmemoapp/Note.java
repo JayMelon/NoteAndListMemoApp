@@ -4,11 +4,17 @@ import java.util.Calendar;
 
 public class Note {
     private int noteID;
+    // Stores unique ID for each note
     private String title;
+    // Stores a title for each note
     private String content;
+    // Stores note contents
     private String priority;
+    // Stores the priority at which the note is ranked
     private Calendar creationTime;
+    // Shows the date/time the note was created
     private Calendar dueTime;
+    // Shows the date/time the note was set as "due" by the user
 
     public Note() {
         noteID = -1;

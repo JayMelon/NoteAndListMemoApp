@@ -25,25 +25,11 @@ public class DataSource {
         databaseHelper.close();
     }
 
-    private ContentValues noteChanger(Note note) {
-        ContentValues values = new ContentValues();
-
-        values.put(DatabaseHelper.TITLE, note.getTitle());
-        values.put(DatabaseHelper.CONTENT, note.getContent());
-        values.put(DatabaseHelper.PRIORITY, note.getPriority());
-        values.put(DatabaseHelper.CREATION_TIME, String.valueOf(note.getCreationTime().getTimeInMillis()));
-        values.put(DatabaseHelper.DUE_TIME, String.valueOf(note.getDueTime().getTimeInMillis()));
-
-        return values;
-    }
-
     public boolean insertNote(Note note) {
         boolean didSucceed = false;
         try {
             didSucceed = database.insert(DatabaseHelper.NOTES_TABLE, null, noteChanger(note)) > 0;
-        } catch (Exception e) {
-
-        }
+        } catch (Exception e) {}
         return didSucceed;
     }
 
@@ -53,9 +39,7 @@ public class DataSource {
             String whereClause  = DatabaseHelper.ID + " = ";
             Long rowID = Long.valueOf(note.getNoteID());
             didSucceed = database.update(DatabaseHelper.NOTES_TABLE, noteChanger(note), whereClause + rowID, null) > 0;
-        } catch (Exception e) {
-
-        }
+        } catch (Exception e) {}
         return didSucceed;
     }
 
@@ -63,9 +47,7 @@ public class DataSource {
         boolean didDelete = false;
         try{
             didDelete = database.delete(DatabaseHelper.NOTES_TABLE,DatabaseHelper.ID + " = " + noteID,null )> 0;
-        }catch(Exception e ){
-
-        }
+        }catch(Exception e ){}
         return didDelete;
     }
 
@@ -74,11 +56,9 @@ public class DataSource {
         try {
             String query = "Select MAX(" + DatabaseHelper.ID + ") from " + DatabaseHelper.NOTES_TABLE;
             Cursor cursor = database.rawQuery(query, null);
-
             cursor.moveToFirst();
             lastId = cursor.getInt(0);
             cursor.close();
-
         } catch (Exception e) {
             lastId = -1;
         }
@@ -103,22 +83,30 @@ public class DataSource {
         Cursor cursor = database.rawQuery(query,null);
         if(cursor.moveToFirst()){
             noteSet(note, cursor);
-
             cursor.close();
         }
         return note;
+    }
+
+    // Used to shorten code for insertNote and updateNote methods
+    private ContentValues noteChanger(Note note) {
+        ContentValues values = new ContentValues();
+        values.put(DatabaseHelper.TITLE, note.getTitle());
+        values.put(DatabaseHelper.CONTENT, note.getContent());
+        values.put(DatabaseHelper.PRIORITY, note.getPriority());
+        values.put(DatabaseHelper.CREATION_TIME, String.valueOf(note.getCreationTime().getTimeInMillis()));
+        values.put(DatabaseHelper.DUE_TIME, String.valueOf(note.getDueTime().getTimeInMillis()));
+        return values;
     }
 
     // Used to shorten code for getNotes methods
     private ArrayList<Note> noteSetter(ArrayList<Note> notes, String query) {
         try {
             Cursor cursor = database.rawQuery(query, null);
-
             cursor.moveToFirst();
             while(!cursor.isAfterLast()) {
                 Note note = new Note();
                 noteSet(note, cursor);
-
                 notes.add(note);
                 cursor.moveToNext();
             }
@@ -129,13 +117,12 @@ public class DataSource {
         return notes;
     }
 
+    // Used to shorten code for noteSetter and getSpecificNote methods
     private void noteSet(Note note, Cursor cursor) {
         note.setNoteID(cursor.getInt(0));
         note.setTitle(cursor.getString(1));
         note.setContent(cursor.getString(2));
         note.setPriority(cursor.getString(3));
-
-
         //
         // Need to figure out how to pull these properly
         //
@@ -145,7 +132,5 @@ public class DataSource {
         Calendar calendarDue = Calendar.getInstance();
         calendarDue.setTimeInMillis(Long.valueOf(cursor.getString(5)));
         note.setDueTime(calendarDue);
-
     }
-
 }
