@@ -25,6 +25,7 @@ public class DataSource {
         databaseHelper.close();
     }
 
+    // Inserts a Note into the database. Returns true/false based on whether the delete was successful
     public boolean insertNote(Note note) {
         boolean didSucceed = false;
         try {
@@ -33,6 +34,7 @@ public class DataSource {
         return didSucceed;
     }
 
+    // Updates a Note that is already in the database. Returns true/false based on whether the delete was successful
     public boolean updateNote(Note note) {
         boolean didSucceed = false;
         try {
@@ -43,6 +45,7 @@ public class DataSource {
         return didSucceed;
     }
 
+    // Deletes a Note from the database. Returns true/false based on whether the delete was successful
     public boolean deleteNote(int noteID) {
         boolean didDelete = false;
         try{
@@ -51,6 +54,7 @@ public class DataSource {
         return didDelete;
     }
 
+    // Returns the ID of the last Note that was interacted with
     public int getLastNoteID() {
         int lastId;
         try {
@@ -65,18 +69,19 @@ public class DataSource {
         return lastId;
     }
 
+    // Returns Notes in an Array
     public ArrayList<Note> getNotes() {
-        ArrayList<Note> notes = new ArrayList<>();
         String query = "SELECT * FROM " + DatabaseHelper.NOTES_TABLE;
-        return noteSetter(notes, query);
+        return noteSetter(query);
     }
 
+    // Returns Notes in an Organized Array
     public ArrayList<Note> getNotes(String sortField, String sortOrder) {
-        ArrayList<Note> notes = new ArrayList<>();
         String query = "SELECT * FROM " + DatabaseHelper.NOTES_TABLE + " ORDER BY " + sortField + " " + sortOrder;
-        return noteSetter(notes, query);
+        return noteSetter(query);
     }
 
+    // Returns a note given its ID.
     public Note getSpecificNote(int noteID) {
         Note note = new Note();
         String query = "SELECT * FROM " + DatabaseHelper.NOTES_TABLE + " WHERE " + DatabaseHelper.ID + " = " + noteID;
@@ -100,7 +105,8 @@ public class DataSource {
     }
 
     // Used to shorten code for getNotes methods
-    private ArrayList<Note> noteSetter(ArrayList<Note> notes, String query) {
+    private ArrayList<Note> noteSetter(String query) {
+        ArrayList<Note> notes = new ArrayList<>();
         try {
             Cursor cursor = database.rawQuery(query, null);
             cursor.moveToFirst();
