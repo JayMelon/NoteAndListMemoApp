@@ -29,7 +29,7 @@ public class DataSource {
     public boolean insertNote(Note note) {
         boolean didSucceed = false;
         try {
-            didSucceed = database.insert(DatabaseHelper.NOTES_TABLE, null, noteChanger(note)) > 0;
+            didSucceed = database.insert(DatabaseHelper.NOTES_TABLE, null, notePutter(note)) > 0;
         } catch (Exception e) {}
         return didSucceed;
     }
@@ -40,7 +40,7 @@ public class DataSource {
         try {
             String whereClause  = DatabaseHelper.ID + " = ";
             Long rowID = Long.valueOf(note.getNoteID());
-            didSucceed = database.update(DatabaseHelper.NOTES_TABLE, noteChanger(note), whereClause + rowID, null) > 0;
+            didSucceed = database.update(DatabaseHelper.NOTES_TABLE, notePutter(note), whereClause + rowID, null) > 0;
         } catch (Exception e) {}
         return didSucceed;
     }
@@ -94,7 +94,7 @@ public class DataSource {
     }
 
     // Used to shorten code for insertNote and updateNote methods
-    private ContentValues noteChanger(Note note) {
+    private ContentValues notePutter(Note note) {
         ContentValues values = new ContentValues();
         values.put(DatabaseHelper.TITLE, note.getTitle());
         values.put(DatabaseHelper.CONTENT, note.getContent());
