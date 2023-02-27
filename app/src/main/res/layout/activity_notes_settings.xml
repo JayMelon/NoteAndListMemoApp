@@ -6,6 +6,40 @@
     android:layout_height="match_parent"
     tools:context=".NotesSettingsActivity">
 
+    <RadioGroup
+        android:id="@+id/radioGroup_Settings_Subjects"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/defaultToolbar">
+
+        <TextView
+            android:id="@+id/textview_radioGroup_OrderBy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/textView_RadioGroup_OrderBy" />
+
+        <RadioButton
+            android:id="@+id/radioButton_subject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/radiobutton_Subject" />
+
+        <RadioButton
+            android:id="@+id/radioButton_Priority"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/radiobutton_Priority" />
+
+        <RadioButton
+            android:id="@+id/radioButton_Date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/radiobutton_Date" />
+    </RadioGroup>
+
     <include
         android:id="@+id/defaultToolbar"
         layout="@layout/toolbar_layout"
@@ -18,6 +52,34 @@
         tools:layout_conversion_absoluteHeight="56dp"
         tools:layout_conversion_absoluteWidth="411dp" />
 
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup_Settings_Subjects">
+
+        <TextView
+            android:id="@+id/textview_RadioGroup_SortBy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/textview_RadioGroup_SortBy" />
+
+        <RadioButton
+            android:id="@+id/radioButton_Asc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/radioButton_Asc" />
+
+        <RadioButton
+            android:id="@+id/radioButton_Desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/radioButton_Desc" />
+    </RadioGroup>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigationBar"
         android:layout_width="match_parent"
@@ -26,13 +88,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav_menu" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="617dp"
-        app:layout_constraintBottom_toTopOf="@+id/navigationBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

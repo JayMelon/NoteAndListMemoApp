@@ -2,4 +2,11 @@
     <string name="app_name">NoteAndListMemoApp</string>
     <string name="nav_list_name">List</string>
     <string name="nav_settings_name">Settings</string>
+    <string name="radiobutton_Subject">Subject</string>
+    <string name="radiobutton_Priority">Priority</string>
+    <string name="radiobutton_Date">Date</string>
+    <string name="textview_RadioGroup_SortBy">Sort By</string>
+    <string name="textView_RadioGroup_OrderBy">Order By</string>
+    <string name="radioButton_Asc">Ascending</string>
+    <string name="radioButton_Desc">Descending</string>
 </resources>
