@@ -128,7 +128,7 @@ public class DataSource {
         note.setNoteID(cursor.getInt(0));
         note.setTitle(cursor.getString(1));
         note.setContent(cursor.getString(2));
-        note.setPriority(cursor.getString(3));
+        note.setPriority(cursor.getInt(3));
         //
         // Need to figure out how to pull these properly
         //

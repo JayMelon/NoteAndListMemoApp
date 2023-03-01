@@ -20,7 +20,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String CREATE_TABLE = "CREATE TABLE " + NOTES_TABLE + " (" + ID +
             " INTEGER PRIMARY KEY AUTOINCREMENT, " + TITLE  + " TEXT NOT NULL, " + CONTENT + " TEXT, " +
-            PRIORITY + " TEXT, " + CREATION_TIME + " TEXT NOT NULL, " + DUE_TIME + " TEXT )";
+            PRIORITY + " INTEGER, " + CREATION_TIME + " TEXT NOT NULL, " + DUE_TIME + " TEXT )";
 
     public DatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

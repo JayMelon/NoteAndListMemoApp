@@ -9,7 +9,7 @@ public class Note {
     // Stores a title for each note
     private String content;
     // Stores note contents
-    private String priority;
+    private int priority;
     // Stores the priority at which the note is ranked
     private Calendar creationTime;
     // Shows the date/time the note was created
@@ -45,11 +45,11 @@ public class Note {
         this.content = content;
     }
 
-    public String getPriority() {
+    public int getPriority() {
         return priority;
     }
 
-    public void setPriority(String priority) {
+    public void setPriority(int priority) {
         this.priority = priority;
     }
 
