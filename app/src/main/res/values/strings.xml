@@ -9,4 +9,8 @@
     <string name="textView_RadioGroup_OrderBy">Order By</string>
     <string name="radioButton_Asc">Ascending</string>
     <string name="radioButton_Desc">Descending</string>
+    <string name="priorityHigh">High</string>
+    <string name="priorityMed">Medium</string>
+    <string name="priorityLow">Low</string>
+    <string name="note">Note</string>
 </resources>
