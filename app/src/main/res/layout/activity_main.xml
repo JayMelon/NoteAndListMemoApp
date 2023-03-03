@@ -8,6 +8,32 @@
     android:id="@+id/constraintlayout">
 
 
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/noteList_ImageButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/list_icon" />
+
+        <ImageButton
+            android:id="@+id/settings_ImageButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/settings_icon" />
+    </LinearLayout>
+
     <include
         android:id="@+id/defaultToolbar"
         layout="@layout/toolbar_layout"
@@ -24,21 +50,11 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewList"
         android:layout_width="match_parent"
-        android:layout_height="617dp"
+        android:layout_height="593dp"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintTop_toBottomOf="@+id/defaultToolbar"
         tools:layout_editor_absoluteX="0dp" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/navigationBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav_menu"
-        tools:layout_conversion_absoluteHeight="56dp"
-        tools:layout_conversion_absoluteWidth="411dp">
-
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
 </androidx.constraintlayout.widget.ConstraintLayout>
