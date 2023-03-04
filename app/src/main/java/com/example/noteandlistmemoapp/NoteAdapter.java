@@ -23,6 +23,21 @@ public class NoteAdapter extends RecyclerView.Adapter {
         noteArrayList = arrayList;
         parentContext = context;
     }
+    @NonNull
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return null;
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return 0;
+    }
 
     public class NoteViewHolder extends RecyclerView.ViewHolder {
         public TextView titleTextView;
@@ -55,10 +70,5 @@ public class NoteAdapter extends RecyclerView.Adapter {
         mOnItemClickListener = itemClickListener;
     }
 
-    @NonNull
-    @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        //View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.___, parent, false);
-        return new NoteViewHolder;
-    }
+
 }
