@@ -13,4 +13,6 @@
     <string name="priorityMed">Medium</string>
     <string name="priorityLow">Low</string>
     <string name="note">Note</string>
+    <string name="deleteText">Delete</string>
+    <string name="saveText">Save</string>
 </resources>
