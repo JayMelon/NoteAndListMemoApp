@@ -17,6 +17,7 @@ public class NoteDialogFragment extends DialogFragment {
     EditText etSubject, etNote;
     RadioGroup rgPriority;
     RadioButton rbLow, rbMedium, rbHigh;
+    Note currentNote;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.dialog_expand_note, container);
