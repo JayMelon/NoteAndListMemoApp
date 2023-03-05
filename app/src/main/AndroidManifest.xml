@@ -35,6 +35,15 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+        <activity
+            android:name=".NoteExpandedNote"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"
+            android:label="Contact Map">>
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
     </application>
 
 </manifest>

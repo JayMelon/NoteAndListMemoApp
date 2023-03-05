@@ -58,9 +58,7 @@ public class  MainActivity extends AppCompatActivity {
         btnAddNote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager fm = getSupportFragmentManager();
-                NoteDialogFragment noteDialogFragment = new NoteDialogFragment();
-                noteDialogFragment.show(fm,"NoteEdit");
+                launchExpandedNote(view);
             }
         });
     }
@@ -76,6 +74,12 @@ public class  MainActivity extends AppCompatActivity {
     //Method that launches Contact List
     private void launchList(View v) {
         Intent i = new Intent(this, MainActivity.class);
+        i.setFlags(i.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
+    }
+    //Method that launches NoteExpanded
+    private void launchExpandedNote(View v) {
+        Intent i = new Intent(this, NoteExpandedNote.class);
         i.setFlags(i.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(i);
     }
