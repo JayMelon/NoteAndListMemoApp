@@ -15,4 +15,5 @@
     <string name="note">Note</string>
     <string name="deleteText">Delete</string>
     <string name="saveText">Save</string>
+    <string name="newNoteText">New</string>
 </resources>

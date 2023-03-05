@@ -3,25 +3,31 @@ package com.example.noteandlistmemoapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
 
-public class MainActivity extends AppCompatActivity {
+public class  MainActivity extends AppCompatActivity {
     Toolbar toolbar;
+    Button btnAddNote;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initNavbarImageButtons();
+        initNoteDialogButton();
     }
 
     //Method that initilizes the navButtons
@@ -48,6 +54,18 @@ public class MainActivity extends AppCompatActivity {
             });
         }
     }
+    private void initNoteDialogButton(){
+        btnAddNote = findViewById(R.id.btn_main_AddNote);
+        btnAddNote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fm = getSupportFragmentManager();
+                NoteDialogFragment noteDialogFragment = new NoteDialogFragment();
+                noteDialogFragment.show(fm,"NoteEdit");
+            }
+        });
+    }
+
 
     //Method that Launches Settings Activity
     private void launchSettings(View v) {
@@ -56,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
 
     }
-
     //Method that launches Contact List
     private void launchList(View v) {
         Intent i = new Intent(this, MainActivity.class);

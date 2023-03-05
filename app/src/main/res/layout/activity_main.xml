@@ -50,11 +50,21 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewList"
         android:layout_width="match_parent"
-        android:layout_height="593dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="5dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintTop_toBottomOf="@+id/defaultToolbar"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_main_AddNote"
+        tools:layout_editor_absoluteX="-2dp" />
+
+    <Button
+        android:id="@+id/btn_main_AddNote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="12dp"
+        android:text="@string/newNoteText"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerViewList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/defaultToolbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
