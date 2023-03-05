@@ -16,7 +16,7 @@
             android:name=".NotesSettingsActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity"
-            android:label="Contact Map">>
+            android:label="Settings">>
 
             <meta-data
                 android:name="android.app.lib_name"
@@ -39,7 +39,7 @@
             android:name=".NoteExpandedNote"
             android:exported="false"
             android:parentActivityName=".MainActivity"
-            android:label="Contact Map">>
+            android:label="Edit Note">>
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
