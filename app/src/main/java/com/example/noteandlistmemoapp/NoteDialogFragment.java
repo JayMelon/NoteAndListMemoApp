@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -20,7 +19,7 @@ public class NoteDialogFragment extends DialogFragment {
     Note currentNote;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.dialog_expand_note, container);
+        final View view = inflater.inflate(R.layout.activity_expand_note, container);
         getDialog().setTitle("Select Date");
 
 
