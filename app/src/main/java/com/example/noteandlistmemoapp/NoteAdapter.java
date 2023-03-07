@@ -2,11 +2,13 @@ package com.example.noteandlistmemoapp;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,29 +16,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class NoteAdapter extends RecyclerView.Adapter {
-    private ArrayList<Note> noteArrayList;
+    private ArrayList<Note> noteData;
     private static View.OnClickListener mOnItemClickListener;
     private boolean isDeleting;
     private Context parentContext;
 
     public NoteAdapter(ArrayList<Note> arrayList, Context context) {
-        noteArrayList = arrayList;
+        noteData = arrayList;
         parentContext = context;
-    }
-    @NonNull
-    @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-
-    }
-
-    @Override
-    public int getItemCount() {
-        return 0;
     }
 
     public class NoteViewHolder extends RecyclerView.ViewHolder {
@@ -46,9 +33,9 @@ public class NoteAdapter extends RecyclerView.Adapter {
 
         public NoteViewHolder(@NonNull View itemView) {
             super(itemView);
-            //titleTextView = itemView.findViewById(R.id.___);
-            //priorityTextView = itemView.findViewById(R.id.___);
-            //deleteButton = itemView.findViewById(R.id.___);
+            titleTextView = itemView.findViewById(R.id.textView_Adapter_Subject);
+            priorityTextView = itemView.findViewById(R.id.textView_Adapter_Priority);
+            deleteButton = itemView.findViewById(R.id.button_Adapter_Delete);
             itemView.setTag(this);
             itemView.setOnClickListener(mOnItemClickListener);
         }
@@ -70,5 +57,59 @@ public class NoteAdapter extends RecyclerView.Adapter {
         mOnItemClickListener = itemClickListener;
     }
 
+    @NonNull
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_note, parent, false);
+        return new NoteViewHolder(v);
+    }
+
+    @SuppressLint("RecyclerView")
+    @Override
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
+        NoteViewHolder nvh = (NoteViewHolder) holder;
+        String currentTitle = noteData.get(position).getTitle();
+        int currentPriority = noteData.get(position).getPriority();
+
+        if (isDeleting) {
+            nvh.getDeleteButton().setVisibility(View.VISIBLE);
+            nvh.getDeleteButton().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    deleteItem(position);
+                }
+            });
+        } else {
+            nvh.getDeleteButton().setVisibility(View.VISIBLE);
+        }
+    }
+
+    public void setDelete(boolean b) {
+        isDeleting = b;
+    }
+
+    private void deleteItem(int position) {
+        Note note = noteData.get(position);
+        DataSource ds = new DataSource(parentContext);
+
+        try {
+            ds.open();
+            boolean didDelete = ds.deleteNote(note.getNoteID());
+            ds.close();
+            if(didDelete) {
+                noteData.remove(position);
+                notifyDataSetChanged();
+            } else {
+                Toast.makeText(parentContext, "Delete Failed", Toast.LENGTH_LONG).show();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public int getItemCount() {
+        return noteData.size();
+    }
 
 }
