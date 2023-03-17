@@ -27,10 +27,20 @@ public class DataSource {
 
     // Inserts a Note into the database. Returns true/false based on whether the delete was successful
     public boolean insertNote(Note note) {
+
         boolean didSucceed = false;
         try {
-            didSucceed = database.insert(DatabaseHelper.NOTES_TABLE, null, notePutter(note)) > 0;
-        } catch (Exception e) {}
+            ContentValues initialValues = new ContentValues();
+            initialValues.put(DatabaseHelper.TITLE, note.getTitle());
+            initialValues.put(DatabaseHelper.CONTENT, note.getContent());
+            initialValues.put(DatabaseHelper.PRIORITY, note.getPriority());
+            initialValues.put(DatabaseHelper.DUE_TIME, note.getDueTime().toString());
+
+            didSucceed = database.insert(DatabaseHelper.NOTES_TABLE, null, initialValues) > 0;
+
+        } catch (Exception e) {
+
+        }
         return didSucceed;
     }
 

@@ -38,7 +38,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
         <EditText
-            android:id="@+id/editText_ExpandedNote_editSubject"
+            android:id="@+id/editText_ExpandedNote_editTitle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="8dp"
@@ -56,7 +56,7 @@
             android:layout_marginTop="30dp"
             android:text="@string/note"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText_ExpandedNote_editSubject" />
+            app:layout_constraintTop_toBottomOf="@+id/editText_ExpandedNote_editTitle" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <RadioGroup
