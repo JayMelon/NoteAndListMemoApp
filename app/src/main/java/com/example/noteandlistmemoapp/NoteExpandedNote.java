@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -179,6 +180,8 @@ saveButton.setOnClickListener(new View.OnClickListener() {
         currentNote.setTitle(titleEdit.getText().toString());
         currentNote.setContent(noteEdit.getText().toString());
         currentNote.setPriority(getSelectedPriority());
+        currentNote.setCreationTime(Calendar.getInstance());
+
         boolean wasSuccessful;
         DataSource ds = new DataSource(NoteExpandedNote.this);
         try{

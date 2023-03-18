@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.provider.ContactsContract;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -34,7 +35,8 @@ public class DataSource {
             initialValues.put(DatabaseHelper.TITLE, note.getTitle());
             initialValues.put(DatabaseHelper.CONTENT, note.getContent());
             initialValues.put(DatabaseHelper.PRIORITY, note.getPriority());
-            initialValues.put(DatabaseHelper.DUE_TIME, note.getDueTime().toString());
+            initialValues.put(DatabaseHelper.CREATION_TIME, note.getCreationTime().getTimeInMillis());
+            initialValues.put(DatabaseHelper.DUE_TIME, note.getDueTime().getTimeInMillis());
 
             didSucceed = database.insert(DatabaseHelper.NOTES_TABLE, null, initialValues) > 0;
 
